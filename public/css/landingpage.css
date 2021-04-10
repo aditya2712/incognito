@@ -5,7 +5,10 @@
    
 }
 body{
-    background-color: #0D7DB4;
+    background-image: url(../assets/images/sky.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
 }
 .text1{
     text-shadow: 2px 2px #92e7f7;
