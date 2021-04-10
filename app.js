@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
@@ -14,8 +15,9 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({
-    extended: true
+    extended: false
 }));
+app.use(cookieParser());
 app.set('view engine', 'ejs')
 
 mongoose.connect( process.env.DB_URL, {
@@ -50,6 +52,34 @@ app.post('/medicalshop/signup', (req, res) => {
         return res.status(400).json({auth: 'false', message: 'email already exist'})
         newMedicalShop.save();
         res.send("medical shop saved")
+    })
+})
+
+app.get('/hospital/login', (req, res) => {
+    console.log(req.cookies);
+    token = req.cookies.auth;
+    hospitalUser.findOne(token, (err, user) => {
+        console.log(user);
+        console.log(token);
+        if(user) return res.send("you are already logged in");
+        else{
+            hospitalUser.findOne( {'email': req.body.email}, (err, user) => {
+                if(!user)
+                return res.json({isAuth : false, message : ' Auth failed ,email not found'});
+                user.comparepassword(req.body.password,(err,isMatch)=>{
+                    if(!isMatch) return res.json({ isAuth : false,message : "password doesn't match"});
+        
+                    user.generateToken((err,user)=>{
+                        if(err) return res.status(400).send(err);
+                        res.cookie('auth',user.token).json({
+                            isAuth : true,
+                            id : user._id,
+                            email : user.email
+                        });
+                    });    
+                });
+            })
+        }
     })
 })
 
