@@ -1,0 +1,118 @@
+*{
+    font-family: 'Poppins';
+    font-weight: 600;
+    transition: 0.5s;
+}
+body{
+    background-color: #AAD9CD;
+}
+.mediquery{
+    font-family: 'Poppins';
+    font-weight: 400;
+    text-align: center;
+    font-size: 300%;
+    color: #ffffff;
+}
+.grid-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.grid-item{
+    color: white;
+    /* background-color: rgb(147, 239, 255); */
+    height: 80%;
+    width: 20%;
+    margin: 2%;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 140%;
+    padding-top: 3%; 
+    padding-bottom: 8%;
+    box-shadow: 2px 2px 20px #85aca1, 
+            -10px -10px 23px #bff1e5;
+    
+}
+
+div .grid-item img {
+    height: 120px;
+    padding-top: 60px;
+    
+}
+
+.grid-item a{
+    text-decoration: none;
+    color: white;
+}
+
+div .grid-item img:hover{
+    transform:scale(1.1);
+}
+
+@media(max-width:420px){
+    main{
+        padding: 2%;
+    }
+    .grid-container{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-between;
+        padding-left: 5%;
+    
+    }
+
+    .grid-item{
+        height: 80%;
+        width: 90%;
+        margin: 2%;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 140%;
+        padding-top: 3%; 
+        padding-bottom: 8%;
+        box-shadow: 2px 2px 20px #85aca1, 
+            -10px -10px 23px #bff1e5;   
+            
+        
+    }
+    div .grid-item img {
+        height: 100px;
+        padding-top: 60px;
+        padding-bottom: 20px;
+    }
+}
+
+@media(max-width:1024px){
+    main{
+        padding: 2%;
+    }
+    .grid-container{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-between;
+        padding-left: 5%;
+    
+    }
+
+    .grid-item{
+        height: 80%;
+        width: 90%;
+        margin: 2%;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 200%;
+        padding-top: 3%; 
+        padding-bottom: 8%;
+        box-shadow: 2px 2px 20px #85aca1, 
+            -10px -10px 23px #bff1e5;   
+            
+        
+    }
+    div .grid-item img {
+        height: 150px;
+        padding-top: 60px;
+        padding-bottom: 20px;
+    }
+}
