@@ -1,28 +1,25 @@
 
 *{
-    font-family: 'Poppins';
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    transition: 0.5s;
+   
 }
 body{
-    background-color: #AAD9CD;
+    background-color: #0D7DB4;
 }
-.mediquery{
-    font-family: 'Poppins';
-    font-weight: 400;
-    text-align: center;
-    font-size: 300%;
-    color: #ffffff;
+.text1{
+    text-shadow: 2px 2px #92e7f7;
 }
 .grid-container{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+   
 
 }
 
 .grid-item{
-    color: white;
+    color: black;
     /* background-color: rgb(147, 239, 255); */
     height: 80%;
     width: 40%;
@@ -32,25 +29,11 @@ body{
     font-size: 140%;
     padding-top: 3%; 
     padding-bottom: 3%;
-    box-shadow: 2px 2px 20px #85aca1, 
-            -10px -10px 23px #bff1e5;
+    box-shadow: 0 20px 50px #000000;
     
 }
 
-div .grid-item img {
-    height: 120px;
-    padding-top: 60px;
-    
-}
 
-.grid-item a{
-    text-decoration: none;
-    color: white;
-}
-
-div .grid-item img:hover{
-    transform:scale(1.1);
-}
 
 @media(max-width:420px){
     main{
