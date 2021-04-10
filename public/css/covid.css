@@ -28,7 +28,7 @@ main{
 .tab {
     overflow: hidden;
     /* border-bottom: 2px solid #80a89e; */
-    background-color: rgb(152, 243, 255);
+    background-color: rgb(152, 226, 255);
     /* padding: 0.5%; */
     justify-content: space-around;
     font-weight: 400;
@@ -45,11 +45,11 @@ main{
     
 }
 .tab button:hover {
-    background-color: #8fb9af;
+    background-color: rgb(188, 231, 248);
 }
 
 .tab button.active {
-    background-color: #b3e6d9;
+    background-color: rgb(101, 211, 255);
 }
 .tabcontent{
     /* display:none; */

@@ -13,15 +13,15 @@ body{
     text-align: center;
     font-size: 300%;
     color: #000000;
-    text-shadow: 3px 3px 9px #ffffff;
+    /* text-shadow: 3px 3px 9px #ffffff; */
 }
 .client1{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
     text-align: center;
-    font-size: 250%;
+    font-size: 200%;
     color: #000000;
-    text-shadow: 3px 3px 9px #ffffff;
+    /* text-shadow: 3px 3px 9px #ffffff; */
 }
 .grid-container{
     display: flex;
@@ -41,7 +41,7 @@ body{
     font-size: 140%;
     padding-top: 3%; 
     padding-bottom: 8%;
-    box-shadow: 0 20px 50px #000000;
+    /* box-shadow: 0 20px 50px #000000; */
     
 }
 
@@ -81,8 +81,8 @@ div .grid-item img:hover{
         font-size: 140%;
         padding-top: 3%; 
         padding-bottom: 8%;
-        box-shadow: 2px 2px 20px #85aca1, 
-            -10px -10px 23px #bff1e5;   
+        box-shadow: 2px 2px 20px #85aca1,  
+             -10px -10px 23px #bff1e5;   
             
         
     }
