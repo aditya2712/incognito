@@ -8,6 +8,8 @@ const hospitalUser = require('./schemas/hospitalUser');
 const medicalShopUser = require('./schemas/medicalShopUser');
 const {hospitalAuth} = require('./middlewares/hospitalAuth');
 const {medicalShopAuth} = require('./middlewares/medicalShopAuth');
+const hospitalData = require('./schemas/hospitalData');
+const medicalShopData = require('./schemas/medicalShopData');
 const salt = 10;
 
 
@@ -76,11 +78,23 @@ app.get('/hospital/login', (req, res) => {
                             id : user._id,
                             email : user.email
                         });
-                    });    
+                    });
                 });
             })
         }
     })
+})
+
+app.post('/addhospitaldata', (req, res) => {
+    const newHospitalData = new hospitalData(req.body);
+    newHospitalData.save();
+    res.send('Hospital Data Added');
+})
+
+app.post('/addmedicalshopdata', (req, res) => {
+    const newMedicalShopData = new medicalShopData(req.body);
+    newMedicalShopData.save();
+    res.send('Medical Shop Data Added');
 })
 
 const PORT =  process.env.PORT || 3000
