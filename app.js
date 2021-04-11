@@ -34,55 +34,55 @@ mongoose.connect( process.env.DB_URL, {
     console.log("DB connected");
 })
 
+// --------Login / Signup--------
 
+app.post('/hospital/signup', (req, res) => {
+    const newHospital = new hospitalUser(req.body);
+    hospitalUser.findOne({email: newHospital.email}, function(err, user){
+        if(user)
+        return res.status(400).json({auth: 'false', message: 'email already exist'})
+        newHospital.save();
+        res.send("hospital saved");
+    })
+})
 
-// app.post('/hospital/signup', (req, res) => {
-//     const newHospital = new hospitalUser(req.body);
-//     hospitalUser.findOne({email: newHospital.email}, function(err, user){
-//         if(user)
-//         return res.status(400).json({auth: 'false', message: 'email already exist'})
-//         newHospital.save();
-//         res.send("hospital saved");
-//     })
-// })
+app.post('/medicalshop/signup', (req, res) => {
+    const newMedicalShop = new medicalShopUser(req.body);
+    medicalShopUser.findOne({email: newMedicalShop.email}, function(err, user){
+        if(user)
+        return res.status(400).json({auth: 'false', message: 'email already exist'})
+        newMedicalShop.save();
+        res.send("medical shop saved")
+    })
+})
 
-// app.post('/medicalshop/signup', (req, res) => {
-//     const newMedicalShop = new medicalShopUser(req.body);
-//     medicalShopUser.findOne({email: newMedicalShop.email}, function(err, user){
-//         if(user)
-//         return res.status(400).json({auth: 'false', message: 'email already exist'})
-//         newMedicalShop.save();
-//         res.send("medical shop saved")
-//     })
-// })
-
-// app.get('/hospital/login', (req, res) => {
-//     console.log(req.cookies);
-//     token = req.cookies.auth;
-//     hospitalUser.findOne(token, (err, user) => {
-//         console.log(user);
-//         console.log(token);
-//         if(user) return res.send("you are already logged in");
-//         else{
-//             hospitalUser.findOne( {'email': req.body.email}, (err, user) => {
-//                 if(!user)
-//                 return res.json({isAuth : false, message : ' Auth failed ,email not found'});
-//                 user.comparepassword(req.body.password,(err,isMatch)=>{
-//                     if(!isMatch) return res.json({ isAuth : false,message : "password doesn't match"});
+app.get('/hospital/login', (req, res) => {
+    console.log(req.cookies);
+    token = req.cookies.auth;
+    hospitalUser.findOne(token, (err, user) => {
+        console.log(user);
+        console.log(token);
+        if(user) return res.send("you are already logged in");
+        else{
+            hospitalUser.findOne( {'email': req.body.email}, (err, user) => {
+                if(!user)
+                return res.json({isAuth : false, message : ' Auth failed ,email not found'});
+                user.comparepassword(req.body.password,(err,isMatch)=>{
+                    if(!isMatch) return res.json({ isAuth : false,message : "password doesn't match"});
         
-//                     user.generateToken((err,user)=>{
-//                         if(err) return res.status(400).send(err);
-//                         res.cookie('auth',user.token).json({
-//                             isAuth : true,
-//                             id : user._id,
-//                             email : user.email
-//                         });
-//                     });
-//                 });
-//             })
-//         }
-//     })
-// })
+                    user.generateToken((err,user)=>{
+                        if(err) return res.status(400).send(err);
+                        res.cookie('auth',user.token).json({
+                            isAuth : true,
+                            id : user._id,
+                            email : user.email
+                        });
+                    });
+                });
+            })
+        }
+    })
+})
 
 // ------GET ROUTES-------
 
@@ -108,6 +108,14 @@ app.get('/searchhospital', (req, res) => {
 
 app.get('/searchmedical', (req, res) => {
     res.render('searchMedical');
+})
+
+app.get('/hospital', (req, res) => {
+    res.render('hospitalForm')
+})
+
+app.get('/medical', (req, res) => {
+    res.render('medicalForm')
 })
 
 // ------POST ROUTES------
