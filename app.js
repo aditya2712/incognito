@@ -87,13 +87,28 @@ mongoose.connect( process.env.DB_URL, {
 // ------GET ROUTES-------
 
 app.get('/',(req, res)=> {
-    res.render('index')
+    res.render('landingpage')
 })
 
 app.get('/aboutus', (req, res)=> {
     res.render('aboutus')
 })
 
+app.get('/covid', (req, res) => {
+    res.render('covid')
+})
+
+app.get('/client', (req, res) => {
+    res.render('client')
+})
+
+app.get('/searchhospital', (req, res) => {
+    res.render('searchHospital');
+})
+
+app.get('/searchmedical', (req, res) => {
+    res.render('searchMedical');
+})
 
 // ------POST ROUTES------
 
