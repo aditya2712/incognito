@@ -14,19 +14,21 @@
   <body style="background-color: #acb2d3;">
     <main>
       <div class='mediquery'>MediQuery</div>
-      <div style="text-align: center; margin:50px; font-size: xx-large;">Search for any Medical Shop or medicine</div>
+      <div style="text-align: center; margin:50px; font-size: xx-large;">Search Results</div>
       <div class='grid-container'>
-          <form action="/searchmedical" method="POST">
-            <div class="input-group">
-              <div class="form-outline">
-                <input id="search-input" type="search" id="keyword" name="keyword" class="form-control" />
-              </div>
-              <button id="search-button" type="submit" class="btn btn-primary">
-                <i class="fa fa-search"></i>
-              </button>
+        <% result.map((res) => {%>
+
+            <div class="card" style="width: 18rem; flex-direction: row;">
+                <div class="card-body">
+                  <h5 class="card-title"><%= res.shopName %></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><%= res.medicine %></h6>
+                  <div class="card-link"><%= res.price %> RS</div>
+                  <button class="btn-primary" style="border-radius: 5px; text-decoration: none; padding:0px 7px;">BUY</button>
+                </div>
             </div>
-        </form>
-      </div>
+
+        <%})%>
+    </div>
     </main>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>

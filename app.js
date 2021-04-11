@@ -123,20 +123,26 @@ app.get('/medical', (req, res) => {
 app.post('/addhospitaldata', (req, res) => {
     const newHospitalData = new hospitalData(req.body);
     newHospitalData.save();
-    res.send('Hospital Data Added');
+    res.render('hospitalForm');
 })
 
 app.post('/addmedicalshopdata', (req, res) => {
     const newMedicalShopData = new medicalShopData(req.body);
     newMedicalShopData.save();
-    res.send('Medical Shop Data Added');
+    res.render('medicalForm');
 })
 
 app.post('/searchhospital', (req, res)=>{
     const keyword = req.body.keyword;
     hospitalData.find({ $text: {$search: keyword} })
     .exec((err, docs)=>{
-        res.send(docs);
+        let temp = [];
+        for(let i=0; i<docs.length;i++){
+            temp.push(docs[i]);
+        }
+        res.render('resultH.ejs', {
+            result: temp
+        });
     })
 })
 
@@ -144,7 +150,13 @@ app.post('/searchmedical', (req, res)=>{
     const keyword = req.body.keyword;
     medicalShopData.find({ $text: {$search: keyword} })
     .exec((err, docs)=>{
-        res.send(docs);
+        let temp = [];
+        for(let i=0; i<docs.length;i++){
+            temp.push(docs[i]);
+        }
+        res.render('resultM.ejs', {
+            result: temp
+        });
     })
 })
 
