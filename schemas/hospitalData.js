@@ -12,4 +12,6 @@ const hospitalDataSchema = mongoose.Schema({
     }
 }) 
 
+hospitalDataSchema.index({'$**': 'text'});
+
 module.exports = mongoose.model('hospitalData', hospitalDataSchema);

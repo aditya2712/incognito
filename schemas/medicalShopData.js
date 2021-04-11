@@ -12,4 +12,7 @@ const medicalShopDataSchema = mongoose.Schema({
     }
 }) 
 
+medicalShopDataSchema.index({'$**': 'text'});
+
+
 module.exports = mongoose.model('medicalShopData', medicalShopDataSchema);
