@@ -1,4 +1,5 @@
 # Incognito
+## 1st runner up of TechNerds hackathon !!!
 ## MediQuery
 This repo is the project of Team incognito for the TechNerds Hackathon. The actual name of the project is MediQuery.
 
